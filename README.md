@@ -6,7 +6,7 @@
 
 ## Description
 
-A platform where the users can track the price of the most valuable cryptocurrencies in the market, adding they favorite to their watch list so they can keep an eye on it.
+A platform where the users can track the most valuable cryptocurrencies in the market, adding they favorite to their watch list so they can keep an eye on it or adding to their portfolio the ones they currently have.
 
 
 
@@ -22,9 +22,9 @@ A platform where the users can track the price of the most valuable cryptocurren
 - **login** - As a user I want to be able to log in on the web page so that I can get back to my account
 - **logout** - As a user I want to be able to log out from the web page so that I can make sure no one will access my account
 - **favorite list** - As a user I want to see the list of my favorite and delete them.
+- **portfolio list** - As a user I want to see the list of their current coins and delete them.
 - **edit user** - As a user I want to be able to edit my profile.
-- **result** - As a user I want to see the list of restaurant filter by my preferences.
-- **restaurant listing** - As a user I want to see more details of the restaurant, be able to call them and visit their website and save it as favorites.
+- **coin listing** - As a user I want to see more details of the restaurant, be able to call them and visit their website and save it as favorites.
 
 
 
@@ -43,14 +43,18 @@ A platform where the users can track the price of the most valuable cryptocurren
 | `POST`     | `/login`                           | Sends Login form data to the server.                         | { email, password }                                      |
 | `GET`      | `/signup`                          | Renders `signup` form view.                                  |                                                          |
 | `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DB. | {  email, password  }                                    |
-| `GET`      | `/private/edit-profile`            | Private route. Renders `edit-profile` form view.             |                                                          |
-| `PUT`      | `/private/edit-profile`            | Private route. Sends edit-profile info to server and updates user in DB. | {[firstName], [lastName], [imageUrl] } |
-| `GET`      | `/private/coins/`               | Private route. Render the `favorites` view.                  |                                                          |
-| `POST`     | `/private/coins/`              | Private route. Adds a new favorite for the current user.     | { name, cuisine, city, }                                 |
-| `DELETE`   | `/private/coins/:coinId` | Private route. Deletes the existing favorite from the current user. |                                                          |
-| `GET`      | `/coins`                     | Redirects to `login` page.                           |                                                          |
-| `GET`      | `/private/coins/details/:id`         | Renders `coins-details` view for the particular coin. |                                                          |
-
+| `GET`      | `/private/profile/`               | Private route. Render the `user-profile` view.                  |   
+| `GET`      | `/private/profile/edit`            | Private route. Renders `edit-profile` form view.             |                                                          |
+| `POST`      | `/private/profile/edit`            | Private route. Sends edit-profile info to server and updates user in DB. | {[firstName], [lastName], [imageUrl], [description] } |
+| `GET`      | `/private/profile/watch-list`               | Private route. Render the `watchList`  view. User can add coins.| 
+| `POST`      | `/private/profile/watch-list/`            | Private route. Sends `coinId` info to server and updates user in DB. | {[watchCoins] } |
+| `GET`      | `/private/profile/watch-list/details`               | Private route. Render the `coinDetails`  view. User can add and delete coins.| 
+| `GET`      | `/private/profile/portfolio/`               | Private route. Render the `portfolioList` view. Where users can choose to add new coins. Users can choose edit/see more details.|
+| `GET`      | `/private/profile/portfolio/details/:id`               | Private route. Render the `coinDetails` view. User can edit the amount owned or delete the coin from the portfolio.|
+| `POST`      | `/private/profile/portfolio/details/:id`            | Private route. Sends `amountOwned` info to server and updates user in DB. | {[amountOwned]} | 
+| `GET`      | `/coins`               | Private route. Render the `coinsList` view.|
+| `GET`     | `/coins/details/:id` |Private route. Display details from the `coinId` and if user is logged he can add coins to user portfolio or watchlist.|                                 |
+| `POST`   | `/coins/details/:id` | Private route. Sends `coinId` info to server and updates user portfolio or watchlist in DB. |                                                   
 
 
 
@@ -63,12 +67,14 @@ User model
 
 ```javascript
 {
+  username: String,
   firstName: String,
   lastName: String,
   email: String,
   password: String,
   picture: String,
-  favorites: [FavoriteId],
+  watchList: [coinId],
+  portfolio: [coinId],
 }
 
 ```
@@ -94,13 +100,16 @@ Coin model
 <br>
 
 ## API's
-
+https://www.coingecko.com/en/api/documentation
+https://api.coingecko.com/api/v3/search/
+https://api.coingecko.com/api/v3/simple/price?ids=BITCOIN&vs_currencies=EUR
 
 <br>
 
 
 ## Packages
-
+Ironlauncher
+axios
 
 
 <br>
@@ -109,7 +118,7 @@ Coin model
 
 ## Backlog
 
-[See the Trello board.](https://trello.com/b/Ni3giVKf/ironhackproject)
+[See the Trello board.](https://trello.com/b/2Soj9NIR/projeto-crypto)
 
 
 
@@ -125,7 +134,7 @@ Coin model
 
 The url to your repository and to your deployed project
 
-[Repository Link]()
+[Repository Link](https://github.com/andrelisboapt/project-crypto)
 
 [Deploy Link]()
 
@@ -142,6 +151,6 @@ The url to your presentation slides
 [Slides Link](https://docs.google.com/presentation/d/1P5FIi0vHZBUcgUtmt1M4_lLCO5dwdJ4UOgtJa4ehGfk/edit?usp=sharing)
 
 ### Contributors
-FirstName LastName - [`<github-username>`](https://github.com/person1-username) - [`<linkedin-profile-link>`](https://www.linkedin.com/in/person1-username)
+André Lisboa - [`GitHub`](https://github.com/andrelisboapt) - [`LinkedIn`](https://www.linkedin.com/in/andrelisboapt/)
 
-FirstName LastName - [`<github-username>`](https://github.com/person2-username) - [`<linkedin-profile-link>`](https://www.linkedin.com/in/person2-username)
+Maria LastName - [`GitHub`](https://github.com/miacsilva) - [`LinkedIn`](https://www.linkedin.com/in/maria-c-b40830147/)
