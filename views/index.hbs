@@ -1,2 +1,18 @@
 <h1>{{appTitle}} 🚀</h1>
 <p>Welcome Ironhacker!</p>
+
+<p>here</p>
+<p>{{coin.name}}</p>
+{{!-- {{#each coin}}
+<p>{{name}}</p>
+{{/each}} --}}
+
+
+{{#if userLoggedIn}}
+<a href="/profile">My Profile</a>
+<a href="/logout" id="logOut">logout</a>
+{{else}}
+<a href="/signup">signup</a>
+<a href="/login">login</a>
+{{/if}}
+

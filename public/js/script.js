@@ -2,3 +2,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("project-crypto JS imported successfully!");
 });
+
+

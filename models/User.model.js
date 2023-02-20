@@ -5,9 +5,17 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: false,
+      required: true,
       unique: true,
       trim: true,
+    },
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
     },
     email: {
       type: String,
@@ -20,6 +28,15 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    avatar: {
+      type: String,
+      default: "https://public.nftstatic.com/static/nft/res/nft-cex/S3/1652901282408_6qfhm4sz18836k4nt5nrx8srjh8imjz9_400x400.png",
+
+    },
+    portfolio: [{
+      type: Schema.Types.ObjectId,
+      
+    }]
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
