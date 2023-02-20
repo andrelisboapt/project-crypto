@@ -6,6 +6,39 @@
 <h2>{{name}}</h2>
 <p>{{market_data.current_price.eur}}€</p>
 
+
+ <li class="nav-item dropdown">
+                <a
+                  class="nav-link px-2 link-secondary"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                 ➕
+                </a>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                
+                  <li>
+                 <form action="/coins/{{id}}/portfolio" method="post">
+                 <button class="dropdown-item" type="submit">Add to Portfolio </button>
+                 </form>
+                 </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <li>
+                <form action="/coins/{{id}}/watch-list" method="post">
+                <button class="dropdown-item" type="submit">Add to Watch-List</button>
+                </form>
+                </li>
+                    
+                </ul>
+              </li>
 </div>
 
 {{/each}}

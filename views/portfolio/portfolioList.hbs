@@ -1,1 +1,13 @@
 <h1>Here is the user portfolio where his current coins are.</h1>
+{{#each userCoinP}}
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{image}}" alt="{{id}}">
+  <div class="card-body">
+    <h5 class={{name}}>{{name}}</h5>
+    <p class="card-text">{{value}}</p>
+
+    <a href="/profile/portfolio/{{coinId}}/details" class="btn btn-primary">See or Edit Details</a>
+
+  </div>
+</div>
+{{/each}}

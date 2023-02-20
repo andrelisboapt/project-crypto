@@ -35,7 +35,11 @@ const userSchema = new Schema(
     },
     portfolio: [{
       type: Schema.Types.ObjectId,
-      
+      ref: 'Coin',
+    }],
+    watchList: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Coin',
     }]
   },
   {

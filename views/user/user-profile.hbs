@@ -5,7 +5,46 @@
 <p>Email: {{user.email}}</p>
 <a href="/profile/edit">Edit profile</a>
 
-<h2>My Portfolio</h2>
 
 
-<h2>My Watch List</h2>
+<div>
+<h2> <a href="/profile/portfolio">My Portfolio</a> </h2> 
+{{#each userCoinP}}
+<div class="row"> 
+<img src="{{image}}" alt="{{id}}"/>
+<h5>{{name}}</h5>
+<p>{{value}}€</p>
+
+</div>
+{{/each}}
+</div>
+
+
+
+<div>
+<h2> <a href="/profile/watch-list">My Watch-List</a> </h2> 
+{{#each userCoinW}}
+<div class="row shadow p-3 mb-5 bg-body-tertiary rounded"> 
+<img src="{{image}}" alt="{{id}}"/>
+<h5>{{name}}</h5>
+<p>{{value}}€</p>
+</div>
+{{/each}}
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
