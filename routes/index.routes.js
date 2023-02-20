@@ -6,7 +6,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const router = express.Router();
 const api = "https://api.coingecko.com/api/v3/coins/";
-const apiDetails = "https://api.coingecko.com/api/v3/coins/{{id}}"
+const apiDetails = "https://api.coingecko.com/api/v3/coins/{{id}}";
 const Coin = require("../models/Coin.model");
 const User = require("../models/User.model");
 
@@ -29,11 +29,11 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
   try {
     let user = req.session.currentUser;
     let id = req.session.currentUser._id;
-    
+
     let userCoin = await User.findById(id).populate("portfolio");
-    let userCoinP = userCoin.portfolio
-    console.log(userCoin)
-    res.render("user/user-profile", { user, userCoinP});
+    let userCoinP = userCoin.portfolio;
+    console.log(userCoin);
+    res.render("user/user-profile", { user, userCoinP });
   } catch (error) {
     next(error);
   }
@@ -64,25 +64,26 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
   }
 });
 
-
-
 //------WATCH-LIST--------------------------------------------------
 router.get("/profile/watch-list", isLoggedIn, async (req, res, next) => {
   try {
     let id = req.session.currentUser._id;
     let userCoin = await User.findById(id).populate("watchList");
-    let userCoinW = userCoin.watchList
-    res.render("watchlist/watchList", {userCoinW});
+    let userCoinW = userCoin.watchList;
+    res.render("watchlist/watchList", { userCoinW });
   } catch (error) {
     next(error);
   }
 });
 
-router.get("/profile/watch-list/:id/details", isLoggedIn, async (req, res, next) => {
+router.get(
+  "/profile/watch-list/:id/details",
+  isLoggedIn,
+  async (req, res, next) => {
     try {
       const { id } = req.params;
       let currentUser = req.session.currentUser._id;
-      let thisCoin = await Coin.findOne({ coinId:id});
+      let thisCoin = await Coin.findOne({ coinId: id });
 
       res.render("watchlist/coinDetails", thisCoin);
     } catch (error) {
@@ -91,26 +92,27 @@ router.get("/profile/watch-list/:id/details", isLoggedIn, async (req, res, next)
   }
 );
 
-
-
 // -----------PORTFOLIO--------------------------------------------------------------
 
 router.get("/profile/portfolio", isLoggedIn, async (req, res, next) => {
   try {
     let id = req.session.currentUser._id;
     let userCoin = await User.findById(id).populate("portfolio");
-    let userCoinP = userCoin.portfolio
-    res.render("portfolio/portfolioList", {userCoinP});
+    let userCoinP = userCoin.portfolio;
+    res.render("portfolio/portfolioList", { userCoinP });
   } catch (error) {
     next(error);
   }
 });
 
-router.get("/profile/portfolio/:id/details", isLoggedIn, async (req, res, next) => {
+router.get(
+  "/profile/portfolio/:id/details",
+  isLoggedIn,
+  async (req, res, next) => {
     try {
       const { id } = req.params;
       let currentUser = req.session.currentUser._id;
-      let thisCoin = await Coin.findOne({ coinId:id});
+      let thisCoin = await Coin.findOne({ coinId: id });
       res.render("portfolio/coinDetails", thisCoin);
     } catch (error) {
       next(error);
@@ -118,7 +120,10 @@ router.get("/profile/portfolio/:id/details", isLoggedIn, async (req, res, next) 
   }
 );
 
-router.get("/profile/portfolio/:id/edit", isLoggedIn, async (req, res, next) => {
+router.get(
+  "/profile/portfolio/:id/edit",
+  isLoggedIn,
+  async (req, res, next) => {
     try {
       const { id } = req.params;
       const coin = await Coin.findById(id);
@@ -162,10 +167,14 @@ router.post("/coins/:id/portfolio", isLoggedIn, async (req, res, next) => {
     let currentUser = req.session.currentUser._id;
 
     const thisCoin = await Coin.findOne({ coinId: id });
+    const thisUser = await User.findById(currentUser);
 
-    const portfolioCoin = await User.findByIdAndUpdate(currentUser, { $push: { portfolio: thisCoin._id } });
-
-    res.redirect(`/profile/portfolio/${id}/details`);
+    if (!thisUser.portfolio.includes(thisCoin._id)) {
+      await User.findByIdAndUpdate(currentUser, {
+        $push: { portfolio: thisCoin._id },
+      });
+      res.redirect(`/profile/portfolio/${id}/details`);
+    }
   } catch (error) {
     next(error);
   }
