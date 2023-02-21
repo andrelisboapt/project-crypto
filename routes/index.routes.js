@@ -6,7 +6,6 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const router = express.Router();
 const api = "https://api.coingecko.com/api/v3/coins/";
-const apiDetails = "https://api.coingecko.com/api/v3/coins/{{id}}";
 const Coin = require("../models/Coin.model");
 const User = require("../models/User.model");
 
@@ -32,8 +31,9 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
 
     let userCoin = await User.findById(id).populate("portfolio");
     let userCoinP = userCoin.portfolio;
-    console.log(userCoin);
-    res.render("user/user-profile", { user, userCoinP });
+    let userCoins = await User.findById(id).populate("watchList");
+    let userCoinW = userCoins.watchList;
+    res.render("user/user-profile", { user, userCoinP, userCoinW });
   } catch (error) {
     next(error);
   }
@@ -110,7 +110,7 @@ router.get(
   isLoggedIn,
   async (req, res, next) => {
     try {
-      const { id } = req.params;
+      const id = req.params.id;
       let currentUser = req.session.currentUser._id;
       let thisCoin = await Coin.findOne({ coinId: id });
       res.render("portfolio/coinDetails", thisCoin);
@@ -165,15 +165,29 @@ router.post("/coins/:id/portfolio", isLoggedIn, async (req, res, next) => {
   try {
     const { id } = req.params;
     let currentUser = req.session.currentUser._id;
-
     const thisCoin = await Coin.findOne({ coinId: id });
+
+    if (thisCoin.description === "") {
+      const response = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${id}`
+      );
+      await Coin.findOneAndUpdate(
+        { coinId: id },
+        { description: response.data.description.en }
+      );
+    }
+
     const thisUser = await User.findById(currentUser);
 
     if (!thisUser.portfolio.includes(thisCoin._id)) {
+      
       await User.findByIdAndUpdate(currentUser, {
         $push: { portfolio: thisCoin._id },
       });
-      res.redirect(`/profile/portfolio/${id}/details`);
+      res.redirect(`/coins`);
+    } else {
+      res.redirect(`/coins`);
+      
     }
   } catch (error) {
     next(error);
@@ -190,10 +204,51 @@ router.post("/coins/:id/watch-list", isLoggedIn, async (req, res, next) => {
     const portfolioCoin = await User.findByIdAndUpdate(currentUser, {
       $push: { watchList: thisCoin._id },
     });
-    res.redirect(`/profile/watch-list/${id}/details`);
+    res.redirect(`/coins`);
   } catch (error) {
     next(error);
   }
 });
+
+router.post(
+  "/profile/portfolio/:id/details/delete",
+  isLoggedIn,
+  async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+      let currentUser = req.session.currentUser._id;
+
+      const thisCoin = await Coin.findOne({ coinId: id });
+
+      const removedCoin = await User.findByIdAndUpdate(currentUser, {
+        $pull: { portfolio: thisCoin._id },
+      });
+      res.redirect(`/profile`);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+router.post(
+  "/profile/watch-list/:id/details/delete",
+  isLoggedIn,
+  async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+      let currentUser = req.session.currentUser._id;
+
+      const thisCoin = await Coin.findOne({ coinId: id });
+
+      const removedCoin = await User.findByIdAndUpdate(currentUser, {
+        $pull: { watchList: thisCoin._id },
+      });
+      res.redirect(`/profile`);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 module.exports = router;

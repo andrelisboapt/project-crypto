@@ -1,3 +1,6 @@
+*{
+  user-select: none;
+}
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -11,7 +14,15 @@ h1 {
   color: 15px;
 }
 
-#coinList{
+#coinList {
   display: flex;
   margin: 2% 0;
 }
+
+.container-prof {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+

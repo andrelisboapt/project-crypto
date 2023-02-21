@@ -6,35 +6,31 @@
 <a href="/profile/edit">Edit profile</a>
 
 
+<div class="container-prof">
 
+<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+  <div class="card-header"> <a href="/profile/portfolio" style="text-decoration: none; color: white;">My Portfolio</a> </div>
+  <div class="card-body">
+    {{#each userCoinP}}
+    <img src="{{image}}" alt="{{id}}"/>
+    <h5 class="card-title">{{name}}</h5>
+    <p class="card-text">{{value}} €</p>
+    {{/each}}
+  </div>
+</div>
+
+<div class="card bg-light mb-3" style="max-width: 18rem;">
+  <div class="card-header"><a href="/profile/watch-list" style="text-decoration: none; color:blue">My Watch-List</a></div>
+  <div class="card-body">
+    {{#each userCoinW}}
+    <img src="{{image}}" alt="{{id}}"/>
+    <h5 class="card-title">{{name}}</h5>
+    <p class="card-text">{{value}} €</p>
+    {{/each}}
+  </div>
 <div>
-<h2> <a href="/profile/portfolio">My Portfolio</a> </h2> 
-{{#each userCoinP}}
-<div class="row"> 
-<img src="{{image}}" alt="{{id}}"/>
-<h5>{{name}}</h5>
-<p>{{value}}€</p>
 
 </div>
-{{/each}}
-</div>
-
-
-
-<div>
-<h2> <a href="/profile/watch-list">My Watch-List</a> </h2> 
-{{#each userCoinW}}
-<div class="row shadow p-3 mb-5 bg-body-tertiary rounded"> 
-<img src="{{image}}" alt="{{id}}"/>
-<h5>{{name}}</h5>
-<p>{{value}}€</p>
-</div>
-{{/each}}
-
-</div>
-
-
-
 
 
 

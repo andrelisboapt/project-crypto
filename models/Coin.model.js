@@ -6,7 +6,10 @@ const coinSchema = new Schema({
   name: String,
   marketCapRank: Number,
   value: Number,
-  description: String,
+  description: {
+    type: String,
+    default: "",
+  },
 });
 
 const Coin = model("Coin", coinSchema);

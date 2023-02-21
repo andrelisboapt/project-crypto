@@ -25,8 +25,7 @@
 
         <li>
           <form action="/coins/{{id}}/portfolio" method="post">
-            <button class="dropdown-item" type="submit">Add to Portfolio
-            </button>
+            <button class="dropdown-item" type="submit" disabled>Add to Portfolio</button>
           </form>
         </li>
 
@@ -41,5 +40,23 @@
       </ul>
     </li>
   </div>
+
+  {{!-- <div class="alert hide">
+    <span class="fas fa-check-square"></span>
+    <span class="msg">Portfolio Updated!</span>
+  </div>
+ 
+
+  <script>
+    $(".pfBt").click(function(){
+       $(".alert").removeClass("hide")
+       $(".alert").addClass("show") 
+       $(".alert").addClass("showAlert") 
+  setTimeout(function(){
+      $(".alert").addClass("hide") 
+      $(".alert").removeClass("show")
+  }, 8000) })
+
+  </script> --}}
 
 {{/each}}

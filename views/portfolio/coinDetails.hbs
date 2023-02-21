@@ -4,6 +4,14 @@
 <h2>{{name}} </h2>
 <h2>Market Cap Rank: {{marketCapRank}} </h2>
 <h2>Current price: {{value}} €</h2>
+{{{description}}}
 
+<form action="/profile/portfolio/{{coinId}}/details/delete" method="post">
+<label for="amount"></label>
+<input type="number" name="amount" id="amount">
 
+</form>
 
+<form action="/profile/portfolio/{{coinId}}/details/delete" method="post">
+<button type="submit">Delete coin</button>
+</form>

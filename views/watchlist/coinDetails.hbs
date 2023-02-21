@@ -5,4 +5,6 @@
 <h3>marketCapRank: {{coin.market_data.market_cap_rank}} </h3>
 <h3>value: {{coin.market_data.current_price.eur}} </h3>
 
-
+<form action="/profile/watch-list/{{coinId}}/details/delete" method="post">
+<button type="submit">Delete coin</button>
+</form>
