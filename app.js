@@ -16,7 +16,9 @@ const hbs = require("hbs");
 const app = express();
 
 hbs.registerHelper('multiply', function(a, b) {
-    return a * b
+    let multiplication = a * b
+    return multiplication.toFixed(2)
+
 });
 
 /* hbs.registerHelper('compare', function(v1, v2, options) {
