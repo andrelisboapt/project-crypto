@@ -2,10 +2,20 @@ const { Schema, model } = require("mongoose");
 
 const coinSchema = new Schema({
   coinId: String,
-  image: String,
+  symbol: String,
+  imageThumb: String,
+  imageSmall: String,
+  imageLarge: String,
   name: String,
   marketCapRank: Number,
-  value: Number,
+  marketCapEUR: Number,
+  marketCapUSD: Number,
+  high24EUR: Number,
+  high24USD: Number,
+  low24EUR: Number,
+  low24USD: Number,
+  valueEUR: Number,
+  valueUSD: Number,
   description: {
     type: String,
     default: "",

@@ -1,10 +1,10 @@
 <h1>Here is the user portfolio where his current coins are.</h1>
 {{#each userCoinP}}
   <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{coin.image}}" alt="{{coin._id}}" />
+    <img class="card-img-top" src="{{coin.imageThumb}}" alt="{{coin._id}}" />
     <div class="card-body">
       <h5 class={{coin.name}}>{{coin.name}}</h5>
-      <p class="card-text">{{coin.value}} Current Price</p>
+      <p class="card-text">{{coin.valueEUR}} Current Price</p>
       <p>{{quantity}}</p>
 
 <p>{{#multiply quantity coin.value}} {{/multiply}} € </p>
