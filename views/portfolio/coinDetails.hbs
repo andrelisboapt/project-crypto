@@ -1,17 +1,19 @@
 <h1>Portfolio coin display</h1>
 
-<img src="{{image}}">
+<img src="{{image}}" />
 <h2>{{name}} </h2>
 <h2>Market Cap Rank: {{marketCapRank}} </h2>
 <h2>Current price: {{value}} €</h2>
 {{{description}}}
-
-<form action="/profile/portfolio/{{coinId}}/details/delete" method="post">
-<label for="amount"></label>
-<input type="number" name="amount" id="amount">
-
+{{!-- <h1>{{amount}}</h1> --}}
+<form action="/profile/portfolio/{{_id}}/details" method="post">
+  <label for="amount">Amount:</label>
+  <input type="number" name="amount" id="amount" />
+  <button type="submit">Update Amount</button>
 </form>
 
+<h1>{{amount}}</h1>
+
 <form action="/profile/portfolio/{{coinId}}/details/delete" method="post">
-<button type="submit">Delete coin</button>
+  <button type="submit">Delete coin</button>
 </form>

@@ -30,17 +30,24 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      default: "https://public.nftstatic.com/static/nft/res/nft-cex/S3/1652901282408_6qfhm4sz18836k4nt5nrx8srjh8imjz9_400x400.png",
-
+      default:
+        "https://public.nftstatic.com/static/nft/res/nft-cex/S3/1652901282408_6qfhm4sz18836k4nt5nrx8srjh8imjz9_400x400.png",
     },
     portfolio: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Coin',
-    }],
-    watchList: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Coin',
-    }]
+        coin: {
+          type: Schema.Types.ObjectId,
+          ref: "Coin",
+        },
+        quantity: Number
+    }
+      
+    ],
+    watchList: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Coin",
+      },
+    ],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

@@ -28,8 +28,13 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
   try {
     let user = req.session.currentUser;
     let id = req.session.currentUser._id;
-
-    let userCoin = await User.findById(id).populate("portfolio");
+    let userCoin = await User.findById(id).populate({
+      path: "portfolio",
+      populate: {
+        path: "coin",
+        model: "Coin",
+      },
+    });
     let userCoinP = userCoin.portfolio;
     let userCoins = await User.findById(id).populate("watchList");
     let userCoinW = userCoins.watchList;
@@ -84,7 +89,7 @@ router.get(
       const { id } = req.params;
       let currentUser = req.session.currentUser._id;
       let thisCoin = await Coin.findOne({ coinId: id });
-
+console.log(thisCoin)
       res.render("watchlist/coinDetails", thisCoin);
     } catch (error) {
       next(error);
@@ -97,8 +102,15 @@ router.get(
 router.get("/profile/portfolio", isLoggedIn, async (req, res, next) => {
   try {
     let id = req.session.currentUser._id;
-    let userCoin = await User.findById(id).populate("portfolio");
+    let userCoin = await User.findById(id).populate({
+      path: "portfolio",
+      populate: {
+        path: "coin",
+        model: "Coin",
+      },
+    });
     let userCoinP = userCoin.portfolio;
+    console.log(userCoinP);
     res.render("portfolio/portfolioList", { userCoinP });
   } catch (error) {
     next(error);
@@ -149,6 +161,7 @@ router.get("/coins", async (req, res, next) => {
           coinId: coin.id,
           image: coin.image.small,
           name: coin.name,
+          amount: coin.amount,
           marketCapRank: coin.market_data.market_cap_rank,
           value: coin.market_data.current_price.eur,
         });
@@ -179,15 +192,16 @@ router.post("/coins/:id/portfolio", isLoggedIn, async (req, res, next) => {
 
     const thisUser = await User.findById(currentUser);
 
-    if (!thisUser.portfolio.includes(thisCoin._id)) {
-      
+    //array with either 0 (not found) or 1 (found the coin)
+    const coinExists = thisUser.portfolio.filter((asset) => asset.coin === id);
+
+    if (!coinExists.length) {
       await User.findByIdAndUpdate(currentUser, {
-        $push: { portfolio: thisCoin._id },
+        $push: { portfolio: { coin: thisCoin._id, quantity: 0 } },
       });
       res.redirect(`/coins`);
     } else {
       res.redirect(`/coins`);
-      
     }
   } catch (error) {
     next(error);
@@ -222,7 +236,7 @@ router.post(
       const thisCoin = await Coin.findOne({ coinId: id });
 
       const removedCoin = await User.findByIdAndUpdate(currentUser, {
-        $pull: { portfolio: thisCoin._id },
+        $pull: { portfolio: {coin: thisCoin._id} },
       });
       res.redirect(`/profile`);
     } catch (error) {
@@ -244,6 +258,37 @@ router.post(
       const removedCoin = await User.findByIdAndUpdate(currentUser, {
         $pull: { watchList: thisCoin._id },
       });
+      res.redirect(`/profile`);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.post(
+  "/profile/portfolio/:id/details",
+  isLoggedIn,
+  async (req, res, next) => {
+    const { id } = req.params;
+    const { amount } = req.body;
+    console.log("amount", amount);
+    console.log("id", id);
+    let currentUser = req.session.currentUser._id;
+
+    try {
+
+      const user = await User.findById(currentUser);
+      const updatedPortfolio = user.portfolio.map((asset) => {
+        if (asset.coin._id.toString() === id) {
+          asset.quantity = amount;
+        }
+        return asset;
+      });
+
+      console.log(updatedPortfolio);
+      await User.findByIdAndUpdate(currentUser, {portfolio: updatedPortfolio})
+
+      //console.log(updatedUser);
       res.redirect(`/profile`);
     } catch (error) {
       next(error);

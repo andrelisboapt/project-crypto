@@ -1,9 +1,11 @@
 *{
   user-select: none;
+  background-color: #00b7ff;
 }
-body {
+bcody {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #00b7ff;
 }
 
 a {
@@ -25,4 +27,3 @@ h1 {
   justify-content: space-around;
   align-items: center;
 }
-

@@ -1,14 +1,18 @@
 <h1>Here is the user portfolio where his current coins are.</h1>
 {{#each userCoinP}}
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{image}}" alt="{{id}}">
-  <div class="card-body">
-    <h5 class={{name}}>{{name}}</h5>
-    <p class="card-text">{{value}}</p>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{coin.image}}" alt="{{coin._id}}" />
+    <div class="card-body">
+      <h5 class={{coin.name}}>{{coin.name}}</h5>
+      <p class="card-text">{{coin.value}} Current Price</p>
+      <p>{{quantity}}</p>
 
-    <a href="/profile/portfolio/{{coinId}}/details" class="btn btn-primary">See or Edit Details</a>
+<p>{{#multiply quantity coin.value}} {{/multiply}} € </p>
+      <a
+        href="/profile/portfolio/{{coin.coinId}}/details"
+        class="btn btn-primary"
+      >See or Edit Details</a>
 
+    </div>
   </div>
-</div>
 {{/each}}
-
