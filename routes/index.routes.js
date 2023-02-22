@@ -185,8 +185,13 @@ router.get("/coins", async (req, res, next) => {
           valueUSD: coin.market_data.current_price.usd,
         });
         await newCoin.save();
-      }
-    });
+        
+        const response1 = await axios.get(`https://api.coingecko.com/api/v3/coins/${coin.id}`);
+        const coin1 = response1.data;
+        await Coin.findOneAndUpdate({ coinId: coin.id }, { valueEUR: coin1.market_data.current_price.eur })
+        
+  }
+});
     res.render("coins", { coin });
   } catch (error) {
     next(error);
