@@ -3,7 +3,38 @@
 
 
 
-<h1 class="index">Welcome CryptoHacker</h1>
+<div class="index-middle-cont">
+
+
+<div>
+<img src="images/logo3.png">
+</div>
+
+
+<div class="index-middle-btn">
+{{#if userLoggedIn}}
+
+<div>
+<button type="button" class="btn btn-outline-light btn-index"><a href="/profile" class="btn-index-a">My Profile</a></button>
+</div>
+<div>
+<button type="button" class="btn btn-outline-light btn-index"><a href="/logout" id="logOut" class="btn-index-a">Logout</a></button>
+</div>
+{{else}}
+<div>
+<button type="button" class="btn btn-outline-light btn-index"><a href="/signup" class="btn-index-a">Sign Up</a></button>
+</div>
+<div>
+<button type="button" class="btn btn-outline-light btn-index"><a href="/login" class="btn-index-a">Login</a></button>
+</div>
+{{/if}}
+</div>
+
+
+
+
+</div>
+
 
 
 <div class="home-container">
@@ -11,13 +42,13 @@
     <source src="/images/video-crypto.mp4" type="video/mp4">
 </video>
 
-{{#if userLoggedIn}}
+{{!-- {{#if userLoggedIn}}
 <a href="/profile">My Profile</a>
 <a href="/logout" id="logOut">logout</a>
 {{else}}
 <a href="/signup">signup</a>
 <a href="/login">login</a>
-{{/if}}
+{{/if}} --}}
 </div>
 
 

@@ -20,6 +20,15 @@ nav{
 
 }
 
+.index-middle-cont{
+  display: flex;
+  flex-direction: column;
+}
+
+.index-middle-btn{
+  spa;
+}
+
 .back-video{
 object-fit: cover;
 position: absolute;
@@ -35,7 +44,7 @@ filter: grayscale(90%) brightness(70%) blur(1.5px);
 }
 
 .index{
-  color: #141e30;
+  color: rgb(20, 30, 48);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   
 }
@@ -137,6 +146,34 @@ footer{
   padding-top: 1vh;
   padding-left: 2vh;
   font-size: 2vh;
+  justify-content: space-around;
+}
+.navbar-dark{
+  background-color: #11ffee00;
+};
+.offcanvas{
+background-color: rgb(235, 180, 2);
+}
+.nav-logout{
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 2vh;
+}
+
+.btn-index{
+border-radius: 2.2vh;
+font-size: 3vh;
+border-color: #141e30;
+border: 3px solid #141e30;
+width: 12vw;
+}
+
+.btn-index-a{
+  text-decoration: none;
+  color: #141e30;
+}
+li{
+  list-style: none;
 }
 
 /* 
