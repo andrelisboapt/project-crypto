@@ -1,6 +1,11 @@
 <h1>Here we display a list of all the coins</h1>
 
+
+<div class="coins-container">
+
 {{#each coin}}
+
+
   <div id="coinList">
     <img src="{{image.thumb}}" alt="{{id}}" />
     <h2>{{name}}</h2>
@@ -23,11 +28,24 @@
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
+        {{#doesInclude ../user id}}
+
+          <li>
+
+            <button class="dropdown-item port-button" disabled>Already added to
+              portfolio!</button>
+
+          </li>
+          {{else}}
+
         <li>
           <form action="/coins/{{id}}/portfolio" method="post">
-            <button class="dropdown-item port-button" type="submit">Add to Portfolio</button>
+            <button class="dropdown-item port-button" type="submit">Add to
+              Portfolio</button>
           </form>
         </li>
+        {{/doesInclude}}
+
 
         <li><hr class="dropdown-divider" /></li>
 
@@ -41,7 +59,8 @@
     </li>
   </div>
 
-{{!--   <div class="alert hide">
+</div>
+  {{!   <div class="alert hide">
     <span class="fas fa-check-square"></span>
     <span class="msg">Portfolio Updated!</span>
   </div>
@@ -63,5 +82,5 @@
          });
          
       </script>
- --}}
+ }}
 {{/each}}

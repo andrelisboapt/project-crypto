@@ -33,14 +33,15 @@ const userSchema = new Schema(
       default:
         "https://public.nftstatic.com/static/nft/res/nft-cex/S3/1652901282408_6qfhm4sz18836k4nt5nrx8srjh8imjz9_400x400.png",
     },
-    portfolio: [{
+    portfolio: [
+      {
         coin: {
           type: Schema.Types.ObjectId,
           ref: "Coin",
         },
-        quantity: Number
-    }
-      
+        quantity: Number,
+        name: String,
+      },
     ],
     watchList: [
       {

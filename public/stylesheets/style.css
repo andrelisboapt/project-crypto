@@ -26,8 +26,12 @@ nav{
 }
 
 .index-middle-btn{
-  spa;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin: 1%;
 }
+
 
 .back-video{
 object-fit: cover;
@@ -61,7 +65,7 @@ h1 {
 
 #coinList {
   display: flex;
-  margin: 2% 0;
+  margin: 20px;
 }
 
 .container-prof {
@@ -162,10 +166,12 @@ background-color: rgb(235, 180, 2);
 
 .btn-index{
 border-radius: 2.2vh;
-font-size: 3vh;
+font-size: 2.7vh;
 border-color: #141e30;
 border: 3px solid #141e30;
-width: 12vw;
+width: 10vw;
+margin: 20px;
+margin-top: 40px;
 }
 
 .btn-index-a{
@@ -175,7 +181,12 @@ width: 12vw;
 li{
   list-style: none;
 }
-
+.list-group-item{
+background-color: #141e30;
+}
+.list-group-flush{
+  border-style: solid 10px white;
+}
 /* 
 *{
   margin: 0;

@@ -15,15 +15,17 @@ const hbs = require("hbs");
 
 const app = express();
 
-hbs.registerHelper('multiply', function(a, b) {
-    let multiplication = a * b
-    return multiplication.toFixed(2)
-
+hbs.registerHelper("multiply", function (a, b) {
+  let multiplication = a * b;
+  return multiplication.toFixed(2);
 });
 
 hbs.registerHelper("doesInclude", function (arg1, arg2, options) {
-  return arg1.includes(arg2) ? options.fn(this) : options.inverse(this);
+  return arg1.portfolio.some((e) => e.name === arg2)
+    ? options.fn(this)
+    : options.inverse(this);
 });
+
 
 /* hbs.registerHelper('compare', function(v1, v2, options) {
   if(v1 === v2) {
@@ -49,10 +51,5 @@ app.use("/", authRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
-
-
-
-
-
 
 module.exports = app;
