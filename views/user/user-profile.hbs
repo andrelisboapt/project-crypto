@@ -1,36 +1,92 @@
-<h1>Here is the {{user.username}} profile</h1>
-<img src="{{user.avatar}}" alt="user avatar">
-<p>First Name: {{user.firstName}}</p>
-<p>Last Name: {{user.lastName}}</p>
-<p>Email: {{user.email}}</p>
-<a href="/profile/edit">Edit profile</a>
-
 
 <div class="container-prof">
 
-<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-  <div class="card-header"> <a href="/profile/portfolio" style="text-decoration: none; color: white;">My Portfolio</a> </div>
-  <div class="card-body">
-    {{#each userCoinP}}
-    <img src="{{coin.imageThumb}}" alt="{{coin.id}}"/>
-    <h5 class="card-title">{{coin.name}}</h5>
-    <p class="card-text">{{coin.valueEUR}} €</p>
-    {{/each}}
-  </div>
-</div>
 
-<div class="card bg-light mb-3" style="max-width: 18rem;">
-  <div class="card-header"><a href="/profile/watch-list" style="text-decoration: none; color:blue">My Watch-List</a></div>
-  <div class="card-body">
-    {{#each userCoinW}}
-    <img src="{{coin.imageThumb}}" alt="{{coin.id}}"/>
-    <h5 class="card-title">{{coin.name}}</h5>
-    <p class="card-text">{{coin.valueEUR}} €</p>
-    {{/each}}
-  </div>
-<div>
 
-</div>
+  <div class="profile-info">
+
+        
+      <img class="img-profile" src="{{user.avatar}}" alt="user avatar">
+      <h3 class="title-coins">Profile of {{user.username}}</h3>
+
+      <div class="profile-text">
+        <p><span>First Name: </span>{{user.firstName}}</p>
+        <p><span>Last Name: </span>{{user.lastName}}</p>
+        <p><span>E-mail: </span>{{user.email}}</p>
+      </div>
+
+        <a href="/profile/edit" class="btn-index-a"><button type="button" class="btn btn-outline-light btn-profile">Edit profile</button></a>
+
+  </div>
+
+
+
+
+
+<div class="port-wat-cards">
+
+{{!-- Portfolio --}}
+  <div class=" cardProf">
+    <div class="card cardPort ">
+      <h2>Portfolio</h2>
+        <div > <a href="/profile/portfolio" style="text-decoration: none;" class="card-header"> click here to see your Portfolio in detail</a> </div>
+  {{#each userCoinP}}
+      <div class="card-body">
+        <h5 class="coinProf"><img class="card-img-prof" src="{{coin.imageLarge}}" alt="{{coin._id}}" />{{coin.name}}</h5>
+        <p class="card-text">Current Price: {{coin.valueEUR}} EUR / {{coin.valueUSD}} USD</p>
+        <p>Amount owned: {{quantity}} {{coin.symbol}} or {{#multiply quantity coin.valueEUR}} {{/multiply}} €</p>
+        <hr>
+      </div>
+  {{/each}}
+      </div>
+    </div>
+  
+
+  
+{{!-- Watch-List --}}
+  <div>
+            <div class="card cardPort">
+              <h2>Watch-List</h2>
+            <div > <a href="/profile/watch-list" style="text-decoration: none;" class="card-header">click here to see your Watch-List in detail</a> </div>
+          {{#each userCoinW}}
+              <div class="card-body">
+                <h5 class="coinProf"><img class="card-img-prof" src="{{coin.imageLarge}}" alt="{{coin._id}}" />{{coin.name}}</h5>
+                <p class="card-text">Current Price: {{coin.valueEUR}} EUR / {{coin.valueUSD}} USD</p>
+                <hr>
+              </div>
+          {{/each}}
+              </div>
+    </div>
+
+
+
+
+
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

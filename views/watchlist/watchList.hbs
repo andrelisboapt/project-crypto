@@ -1,14 +1,17 @@
-<h1>This is the full watch list</h1>
-
+<h1 class="title-coins">Watch-List of {{cryptoHacker.username}}</h1>
+<a href="/profile">Back to Profile</a>
+<div class="cardsP">
 {{#each userCoinW}}
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{coin.imageLarge}}" alt="{{coin.id}}">
+<div class="card cardPort" style="width: 16rem;">
+  
   <div class="card-body">
-    <h5 class={{coin.name}}>{{coin.name}}</h5>
-    <p class="card-text">{{coin.valueEUR}}</p>
+    <h5 class="coinP"><img class="card-img-top" src="{{coin.imageLarge}}" alt="{{coin.id}}">{{coin.name}}</h5>
+    <p class="card-text">EUR: {{coin.valueEUR}} €</p>
+    <p class="card-text">USD: {{coin.valueUSD}} $</p>
 
-    <a href="/profile/watch-list/{{coin.coinId}}/details" class="btn btn-primary">See or Edit Details</a>
+    <a href="/profile/watch-list/{{coin.coinId}}/details" class="btn-index-a btn-portlist"><button type="submit" class="btn btn-outline-light btn-portlist">See Details</button></a>
 
   </div>
 </div>
 {{/each}}
+</div>

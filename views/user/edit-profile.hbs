@@ -1,50 +1,63 @@
-<h1>Here user edit profile</h1>
+<h2 class="title-coins">Edit your profile</h2>
 
-<div>
-  <h2>Edit Profile</h2>
+<div class="editProfile">
+  
   <form action="/profile/edit" method="POST">
 
-    <label> First Name:
-      <input type="text" name="firstName" value="{{user.firstName}}" />
-    </label>
+  <div class="editInput">
 
-    <label> Last Name:
-      <input type="text" name="lastName" value="{{user.lastName}}" />
+    <label class="nameEdit"> First Name:<br>
+      <input type="text" name="firstName" class="rounded" value="{{user.firstName}}" />
     </label>
+    <label class="nameEdit"> Last Name:<br>
+      <input type="text" name="lastName" class="rounded" value="{{user.lastName}}" />
+    </label>
+  </div>
+      <div class="avatars">
     <ul>
+      <div>
     <li>
-        <img src="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1652901282408_6qfhm4sz18836k4nt5nrx8srjh8imjz9_400x400.png" alt="Default avatar">
+      
+        <img class="rounded img-edit" src="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1652901282408_6qfhm4sz18836k4nt5nrx8srjh8imjz9_400x400.png" alt="Default avatar">
         <label for="default"></label>
-        <input type="radio"  name="pic" value="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1652901282408_6qfhm4sz18836k4nt5nrx8srjh8imjz9_400x400.png">
+        <input type="radio"  name="pic" class="radioButton" value="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1652901282408_6qfhm4sz18836k4nt5nrx8srjh8imjz9_400x400.png">
     </li>
-    
+    </div>
+    <div>
     <li>
-        <img src="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1670904071959_jefasq5pbyaek2hc6hj4zptzv13a6efj_400x400.png" alt="">
+        <img class="rounded img-edit" src="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1670904071959_jefasq5pbyaek2hc6hj4zptzv13a6efj_400x400.png" alt="">
         <label for="image"></label>
-        <input type="radio" name="pic" value="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1670904071959_jefasq5pbyaek2hc6hj4zptzv13a6efj_400x400.png">
+        <input type="radio" name="pic" class="radioButton" value="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1670904071959_jefasq5pbyaek2hc6hj4zptzv13a6efj_400x400.png">
    </li>
+   </div>
+   <div>
     <li>
-        <img src="https://public.nftstatic.com/static/nft/webp/nft-cex/S3/1672954100043_fm0vcsa8ns9ebq1ozw6dm08dnfb55pdu_400x400.webp" alt="">
+        <img class="rounded img-edit" src="https://public.nftstatic.com/static/nft/webp/nft-cex/S3/1672954100043_fm0vcsa8ns9ebq1ozw6dm08dnfb55pdu_400x400.webp" alt="">
         <label for="image"></label>
-        <input type="radio" name="pic" value="https://public.nftstatic.com/static/nft/webp/nft-cex/S3/1672954100043_fm0vcsa8ns9ebq1ozw6dm08dnfb55pdu_400x400.webp">
+        <input type="radio" name="pic" class="radioButton" value="https://public.nftstatic.com/static/nft/webp/nft-cex/S3/1672954100043_fm0vcsa8ns9ebq1ozw6dm08dnfb55pdu_400x400.webp">
    </li>
+   </div>
+   <div>
     <li>
-        <img src="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1676502939097_egwngvvvohzs3lz9fsyp8e3focr5nss2_400x400.png" alt="">
+        <img class="rounded img-edit" src="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1676502939097_egwngvvvohzs3lz9fsyp8e3focr5nss2_400x400.png" alt="">
         <label for="image"></label>
-        <input type="radio" name="pic" value="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1676502939097_egwngvvvohzs3lz9fsyp8e3focr5nss2_400x400.png">
+        <input type="radio" name="pic" class="radioButton" value="https://public.nftstatic.com/static/nft/res/nft-cex/S3/1676502939097_egwngvvvohzs3lz9fsyp8e3focr5nss2_400x400.png">
    </li>
+   </div>
         
     
     </ul>
-
+</div>
     {{!-- <label> Password:
       <input type="password" name="password" value="{{user.password}}" />
     </label> --}}
-
-    <button type="submit">Save</button>
+    <div class="saveBtn">
+<a href="/profile" class="btn-index-a"><button type="submit" class="btn btn-outline-light btn-profile">Save</button></a>
+    </div>
 
      {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
   </form>
 </div>
+ 

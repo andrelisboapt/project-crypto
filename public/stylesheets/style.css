@@ -8,6 +8,7 @@ body {
   /* background-color: #c9e9f6; */
   margin: 0;
   padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 nav{
@@ -50,8 +51,7 @@ filter: grayscale(90%) brightness(70%) blur(1.5px);
 
 .index{
   color: rgb(20, 30, 48);
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
@@ -68,14 +68,6 @@ h1 {
   display: flex;
   margin: 20px;
 }
-
-.container-prof {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
 
 
 /* LOGIN FORM */
@@ -193,4 +185,185 @@ background-color: #141e30;
 }
 .offcanvas-body{
   background-color: #141e30;
+}
+
+
+/*----- Coin page Styling -------*/
+
+.table{
+  color: #5d89bb;
+}
+
+.titles-table{
+  color:  #5d89bb;
+}
+
+.title-coins{
+padding: 2vw;
+color: #5d89bb;
+}
+.table-hover tr:hover td{
+  color: #5d89bb;
+  background-color: #0b111b;
+}
+.table-hover tr:hover .th-hvr{
+  color: #5d89bb;
+  background-color: #0b111b;
+}
+
+
+/*----- Profile page Styling -------*/
+
+.container-prof {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 5%;
+}
+
+
+.profile-info{
+  color: #0b111b;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  
+}
+.btn-profile{
+  border-radius: 1.7vh;
+  font-size: 2vh;
+  border-color: #141e30;
+  border: 3px solid #141e30;
+  width: 7vw;
+}
+.profile-info span{
+  color: #5d89bb;
+}
+
+.img-profile{
+border-radius: 20%;
+box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.501) -6px -2px 16px 0px;
+width: 65%;
+}
+
+.profile-text{
+  margin-top: 10%;
+  margin-bottom: 7%;
+}
+
+/* -------User Profile Portfolio + WatchList */
+.port-wat-cards{
+  display: flex;
+  flex-direction: row;
+}
+
+.card-img-prof{
+  width: 10%
+}
+
+.coinProf{
+  margin-bottom: 5%;
+  font-size: 3vh;
+  
+}
+.coinProf > img{
+  margin-right: 7%
+}
+
+.card h2{
+color: #5d89bb;
+margin: 4%
+}
+
+.card-header{
+color: #5d89bbaa;
+}
+
+.cardProf{
+  margin-right: 7%;
+}
+
+
+
+
+
+.rounded{
+  width: 80%;
+  display: flex;
+  flex-direction: row-reverse;
+  background-color:#0b111b;
+  color: white;
+}
+.avatars > ul{
+  display: flex;
+  flex-direction: row;
+  margin-left: 3vw;
+  margin-top: 3%;
+}
+.radioButton{
+  margin-left: 29%;
+  margin-top: 5%;
+}
+.editProfile{
+  margin-top: 1%;
+  color:#5d89bb;
+}
+
+.editInput{
+  margin-left: 2vw;
+}
+.saveBtn{
+  margin-left: 45vw;
+}
+.nameEdit{
+  color: #5d89bb;
+  font-weight: bold;
+}
+.img-edit{
+  box-shadow: rgba(96, 176, 241, 0.5) -5px 5px, rgba(96, 176, 241, 0.4) -10px 10px, rgba(96, 176, 241, 0.3) -15px 15px, rgba(96, 176, 241, 0.15) -20px 20px;
+  width: 70%;
+}
+.cardPort{
+  background-color: #0b111b;
+  margin: 3%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.cardsP{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card-img-top{
+  width: 20%
+}
+.coinP{
+  margin-bottom: 7%;
+  
+}
+.coinP > img{
+  margin-right: 7%
+}
+.btn-portlist{
+    border-radius: 1.7vh;
+    font-size: 2vh;
+    
+}
+.cardDetails{
+  background-color: #0b111b;
+  margin-left: 4%;
+  padding: 2%;
+}
+.imgDetails{
+  width: 100%;
+  margin-top: 10%;
+  
+}
+.formDiv{
+  margin-top: 13%
+}
+.bold{
+  font-weight: bold;
+}
+.deleteBtn{
+  position:absolute;
 }
