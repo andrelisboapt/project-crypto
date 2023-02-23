@@ -16,17 +16,17 @@
 {{#if userLoggedIn}}
 
 <div>
-<button type="button" class="btn btn-outline-light btn-index"><a href="/profile" class="btn-index-a">My Profile</a></button>
+<a href="/profile" class="btn-index-a"><button type="button" class="btn btn-outline-light btn-index">My Profile</button></a>
 </div>
 <div>
-<button type="button" class="btn btn-outline-light btn-index"><a href="/logout" id="logOut" class="btn-index-a">Logout</a></button>
+<a href="/logout" id="logOut" class="btn-index-a"><button type="button" class="btn btn-outline-light btn-index">Logout</button></a>
 </div>
 {{else}}
 <div>
-<button type="button" class="btn btn-outline-light btn-index"><a href="/signup" class="btn-index-a">Sign Up</a></button>
+<a href="/signup" class="btn-index-a"><button type="button" class="btn btn-outline-light btn-index">Sign Up</button></a>
 </div>
 <div>
-<button type="button" class="btn btn-outline-light btn-index"><a href="/login" class="btn-index-a">Login</a></button>
+<a href="/login" class="btn-index-a"><button type="button" class="btn btn-outline-light btn-index">Login</button></a>
 </div>
 {{/if}}
 </div>

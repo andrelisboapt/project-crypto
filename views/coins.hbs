@@ -4,19 +4,25 @@
 
 <div class="coins-container">
 
-{{#each coin}}
-
-
-  <div id="coinList">
-    <img src="{{image.thumb}}" alt="{{id}}" />
-    <h2>{{name}}</h2>
-    <p>{{market_data.current_price.eur}}€</p>
-
-    {{#if errorMessage}}
+  <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price Euro - Dollar</th>
+      <th scope="col"> Add to your Profile!</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each coin}}
+    <tr>
+      <th scope="row">{{market_data.market_cap_rank}}</th> 
+      <td> <img src="{{image.thumb}}" alt="{{id}}" /> {{name}} </td>
+      <td>{{market_data.current_price.eur}} Eur - {{market_data.current_price.usd}} USD</td>
+      {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
-
-    <li class="nav-item dropdown">
+      <td>  <li class="nav-item dropdown">
       <a
         class="nav-link px-2 link-secondary"
         href="#"
@@ -69,12 +75,12 @@
           </form>
         </li>
         
-        {{/doesIncludeWatch}}
-</div>
+        {{/doesIncludeWatch}} 
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
 
-
 </div>
-</div>
-{{/each}}
-
 </div>

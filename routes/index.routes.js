@@ -98,7 +98,8 @@ router.get(
 
       await Coin.findOneAndUpdate(
         { coinId: id },
-        { valueEUR: coin.market_data.current_price.eur }
+        { valueEUR: coin.market_data.current_price.eur },
+        {valueUSD: coin.market_data.current_price.usd},
       );
 
       res.render("watchlist/coinDetails", thisCoin);
@@ -142,8 +143,15 @@ router.get(
       const coin = response.data;
 
       await Coin.findOneAndUpdate(
-        { coinId: id },
-        { valueEUR: coin.market_data.current_price.eur }
+        { coinId: id }, {valueEUR: coin.market_data.current_price.eur,
+         valueUSD: coin.market_data.current_price.usd,
+        marketCapRank: coin.market_cap_rank,
+        marketCapEUR: coin.market_data.market_cap.eur,
+        marketCapUSD: coin.market_data.market_cap.usd,
+        high24EUR: coin.market_data.high_24h.eur,
+      },
+        
+        
       );
       res.render("portfolio/coinDetails", thisCoin);
     } catch (error) {
@@ -202,7 +210,8 @@ router.get("/coins", async (req, res, next) => {
         const coin1 = response1.data;
         await Coin.findOneAndUpdate(
           { coinId: coin.id },
-          { valueEUR: coin1.market_data.current_price.eur }
+          { valueEUR: coin1.market_data.current_price.eur },
+          {valueUSD: coin1.market_data.current_price.usd}
         );
       }
       
