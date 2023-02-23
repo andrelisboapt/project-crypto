@@ -2,12 +2,12 @@
 
 {{#each userCoinW}}
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{imageLarge}}" alt="{{id}}">
+  <img class="card-img-top" src="{{coin.imageLarge}}" alt="{{coin.id}}">
   <div class="card-body">
-    <h5 class={{name}}>{{name}}</h5>
-    <p class="card-text">{{valueEUR}}</p>
+    <h5 class={{coin.name}}>{{coin.name}}</h5>
+    <p class="card-text">{{coin.valueEUR}}</p>
 
-    <a href="/profile/watch-list/{{coinId}}/details" class="btn btn-primary">See or Edit Details</a>
+    <a href="/profile/watch-list/{{coin.coinId}}/details" class="btn btn-primary">See or Edit Details</a>
 
   </div>
 </div>

@@ -26,6 +26,20 @@ hbs.registerHelper("doesInclude", function (arg1, arg2, options) {
     : options.inverse(this);
 });
 
+/* hbs.registerHelper("doesIncludeWL", function (arg1, arg2, options) {
+  console.log(arg1.watchList)
+  return arg1.watchList.some((e) => e === arg2)
+    ? options.fn(this)
+    : options.inverse(this);
+}); */
+
+hbs.registerHelper("doesIncludeWatch", function (arg1, arg2, options) {
+  return arg1.watchList.some((e) => e.name === arg2) 
+  ? options.fn(this) 
+  : options.inverse(this);
+});
+
+
 
 /* hbs.registerHelper('compare', function(v1, v2, options) {
   if(v1 === v2) {

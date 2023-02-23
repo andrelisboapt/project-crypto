@@ -29,12 +29,13 @@
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
+<div>
         {{#doesInclude ../user id}}
 
           <li>
 
             <button class="dropdown-item port-button" disabled>Already added to
-              portfolio!</button>
+              Portfolio!</button>
 
           </li>
           {{else}}
@@ -50,18 +51,30 @@
 
         <li><hr class="dropdown-divider" /></li>
 
+
+        {{#doesIncludeWatch ../user id}}
+
+        <li>
+
+            <button class="dropdown-item port-button" disabled>Already added to
+              Watch List!</button>
+
+          </li>
+          {{else}}
+
         <li>
           <form action="/coins/{{id}}/watch-list" method="post">
-            <button class="dropdown-item" type="submit">Add to Watch-List</button>
+            <button class="dropdown-item port-button" type="submit">Add to
+              Watch-List</button>
           </form>
         </li>
-
-      </ul>
-    </li>
-  </div>
-
+        
+        {{/doesIncludeWatch}}
 </div>
 
+
+</div>
+</div>
 {{/each}}
 
 </div>

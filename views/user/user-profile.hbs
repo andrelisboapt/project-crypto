@@ -23,9 +23,9 @@
   <div class="card-header"><a href="/profile/watch-list" style="text-decoration: none; color:blue">My Watch-List</a></div>
   <div class="card-body">
     {{#each userCoinW}}
-    <img src="{{imageThumb}}" alt="{{id}}"/>
-    <h5 class="card-title">{{name}}</h5>
-    <p class="card-text">{{valueEUR}} €</p>
+    <img src="{{coin.imageThumb}}" alt="{{coin.id}}"/>
+    <h5 class="card-title">{{coin.name}}</h5>
+    <p class="card-text">{{coin.valueEUR}} €</p>
     {{/each}}
   </div>
 <div>

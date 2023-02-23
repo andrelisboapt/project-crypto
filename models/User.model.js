@@ -45,8 +45,11 @@ const userSchema = new Schema(
     ],
     watchList: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "Coin",
+        coin:{
+          type: Schema.Types.ObjectId,
+          ref: "Coin",
+        },
+        name: String,
       },
     ],
   },

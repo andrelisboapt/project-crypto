@@ -1,0 +1,45 @@
+<div>
+<h1>Here we display a list of all the coins</h1>
+
+
+<div class="coins-container">
+
+{{#each coin}}
+
+
+  <div id="coinList">
+    <img src="{{image.thumb}}" alt="{{id}}" />
+    <h2>{{name}}</h2>
+    <p>{{market_data.current_price.eur}}€</p>
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link px-2 link-secondary"
+        href="#"
+        id="navbarDropdownMenuLink"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        ➕
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+          <li>
+          <form action="" method="">
+            <button class="dropdown-item port-button" type="submit"><a href="/login" style="text-decoration:none; color:currentColor">Go to Login</a></button>
+          </form>
+        </li>
+      </ul>
+    </li>
+  </div>
+
+</div>
+</div>
+{{/each}}
+
+</div>

@@ -7,6 +7,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   /* background-color: #c9e9f6; */
   margin: 0;
+  padding: 0;
 }
 
 nav{
@@ -186,6 +187,12 @@ background-color: #141e30;
 }
 .list-group-flush{
   border-style: solid 10px white;
+}
+.offcanvas-header{
+  background-color: #141e30;
+}
+.offcanvas-body{
+  background-color: #141e30;
 }
 /* 
 *{

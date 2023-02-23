@@ -29,26 +29,26 @@
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/coins">Crypto Currencies</a>
+            <a class="nav-link active" href="/coins">Crypto Currencies</a>
           </li>
           {{#if userLoggedIn}}
           {{else}}
           <li class="nav-item">
-            <a class="nav-link" href="/signup">Sign Up</a>
+            <a class="nav-link active" href="/signup">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link active" href="/login">Login</a>
           </li>
           {{/if}}
           <li class="nav-item dropdown">
               {{#if userLoggedIn}}
-            <a class="nav-link" href="#" role="button" aria-expanded="false">
+            <a class="nav-link active" href="#" role="button" aria-expanded="false">
               My Account
             </a>
             
               
                 <ul class="list-group list-group-flush">
-                  <li><a class="list-group-item nav-item-bg text-white" style="border-top-style: none;" href="/profile">Profile</a></li>
+                  <li><a class="list-group-item nav-item-bg text-white" style="border-style: none;" href="/profile">Profile</a></li>
                   
                   <li><a class="list-group-item nav-item-bg text-white" style="border-style: none;" href="/profile/portfolio">Portfolio</a></li>
                   <li><a class="list-group-item nav-item-bg text-white" style="border-style: none;" href="/profile/watch-list">Watch-List</a></li>

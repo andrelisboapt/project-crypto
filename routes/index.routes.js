@@ -36,8 +36,9 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
       },
     });
     let userCoinP = userCoin.portfolio;
-    let userCoins = await User.findById(id).populate("watchList");
+    let userCoins = await User.findById(id).populate("watchList.coin");
     let userCoinW = userCoins.watchList;
+    console.log(userCoinW)
 
     res.render("user/user-profile", { user, userCoinP, userCoinW });
   } catch (error) {
@@ -74,7 +75,7 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
 router.get("/profile/watch-list", isLoggedIn, async (req, res, next) => {
   try {
     let id = req.session.currentUser._id;
-    let userCoin = await User.findById(id).populate("watchList");
+    let userCoin = await User.findById(id).populate("watchList.coin");
     let userCoinW = userCoin.watchList;
     res.render("watchlist/watchList", { userCoinW });
   } catch (error) {
@@ -87,7 +88,7 @@ router.get(
   isLoggedIn,
   async (req, res, next) => {
     try {
-      const { id } = req.params;
+      const id = req.params.id;
       let currentUser = req.session.currentUser._id;
       let thisCoin = await Coin.findOne({ coinId: id });
       const response = await axios.get(
@@ -204,15 +205,22 @@ router.get("/coins", async (req, res, next) => {
           { valueEUR: coin1.market_data.current_price.eur }
         );
       }
+      
     });
-    const { _id } = req.session.currentUser;
+    if(req.session.currentUser){
+      const { _id } = req.session.currentUser;
+    
     const user = await User.findById(_id);
-
     const myCoins = await Coin.find({});
-
+   
+    
     res.render("coins", { coin, user, myCoins });
-  } catch (error) {
-    next(error);
+  }else{
+    res.render("coinsLogout", { coin });
+    
+  }
+} catch (error) {
+  next(error);
   }
 });
 
@@ -237,7 +245,7 @@ router.post("/coins/:id/portfolio", isLoggedIn, async (req, res, next) => {
     const coinExists = thisUser.portfolio.filter((asset) => {
       return thisCoin._id.toString() === asset.coin.toString();
     });
-    console.log(thisCoin._id);
+    
 
     if (coinExists.length === 0) {
       await User.findByIdAndUpdate(currentUser, {
@@ -257,17 +265,21 @@ router.post("/coins/:id/portfolio", isLoggedIn, async (req, res, next) => {
 router.post("/coins/:id/watch-list", isLoggedIn, async (req, res, next) => {
   try {
     const { id } = req.params;
+    console.log(id)
     let currentUser = req.session.currentUser._id;
     const thisCoin = await Coin.findOne({ coinId: id });
     const thisUser = await User.findById(currentUser);
 
-    const coinExists = thisUser.watchList.includes(thisCoin._id.toString());
+    const coinExists = thisUser.watchList.filter((asset) => {
+      return thisCoin._id.toString() === asset.coin.toString();
+    });
+    
 
-    console.log(thisCoin._id);
-
-    if (!coinExists) {
+    if (coinExists.length === 0) {
       await User.findByIdAndUpdate(currentUser, {
-        $push: { watchList: thisCoin._id },
+        $push: {
+          watchList: { coin: thisCoin._id, name: thisCoin.coinId },
+        },
       });
       res.redirect(`/coins`);
     } else {
@@ -277,7 +289,24 @@ router.post("/coins/:id/watch-list", isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
+   /*  const coinExists = thisUser.watchList.includes(thisCoin._id.toString());
 
+    
+
+    if (!coinExists) {
+      await User.findByIdAndUpdate(currentUser, {
+        $push: { watchList: {coin: thisCoin._id, name: thisCoin.coinId },
+      }
+      });
+      res.redirect(`/coins`);
+    } else {
+      res.redirect(`/coins`);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+ */
 router.post(
   "/profile/portfolio/:id/details/delete",
   isLoggedIn,
@@ -310,7 +339,7 @@ router.post(
       const thisCoin = await Coin.findOne({ coinId: id });
 
       const removedCoin = await User.findByIdAndUpdate(currentUser, {
-        $pull: { watchList: thisCoin._id },
+        $pull: { watchList: {coin: thisCoin._id} },
       });
       res.redirect(`/profile`);
     } catch (error) {
