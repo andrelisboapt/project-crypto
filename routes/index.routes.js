@@ -77,7 +77,8 @@ router.get("/profile/watch-list", isLoggedIn, async (req, res, next) => {
     let id = req.session.currentUser._id;
     let userCoin = await User.findById(id).populate("watchList.coin");
     let userCoinW = userCoin.watchList;
-    res.render("watchlist/watchList", { userCoinW });
+    let cryptoHacker = req.session.currentUser
+    res.render("watchlist/watchList", { userCoinW, cryptoHacker });
   } catch (error) {
     next(error);
   }
@@ -97,9 +98,13 @@ router.get(
       const coin = response.data;
 
       await Coin.findOneAndUpdate(
-        { coinId: id },
-        { valueEUR: coin.market_data.current_price.eur },
-        {valueUSD: coin.market_data.current_price.usd},
+        { coinId: id }, {valueEUR: coin.market_data.current_price.eur,
+          valueUSD: coin.market_data.current_price.usd,
+         marketCapRank: coin.market_cap_rank,
+         marketCapEUR: coin.market_data.market_cap.eur,
+         marketCapUSD: coin.market_data.market_cap.usd,
+         high24EUR: coin.market_data.high_24h.eur,
+       },
       );
 
       res.render("watchlist/coinDetails", thisCoin);
@@ -122,8 +127,9 @@ router.get("/profile/portfolio", isLoggedIn, async (req, res, next) => {
       },
     });
     let userCoinP = userCoin.portfolio;
+    let cryptoHacker = req.session.currentUser
 
-    res.render("portfolio/portfolioList", { userCoinP });
+    res.render("portfolio/portfolioList", { userCoinP, cryptoHacker });
   } catch (error) {
     next(error);
   }
@@ -187,7 +193,7 @@ router.get("/coins", async (req, res, next) => {
       if (!existingCoin) {
         const newCoin = new Coin({
           coinId: coin.id,
-          symbol: coin.symbol,
+          symbol: coin.symbol.toUpperCase(),
           imageThumb: coin.image.thumb,
           imageSmall: coin.image.small,
           imageLarge: coin.image.large,
@@ -278,6 +284,15 @@ router.post("/coins/:id/watch-list", isLoggedIn, async (req, res, next) => {
     let currentUser = req.session.currentUser._id;
     const thisCoin = await Coin.findOne({ coinId: id });
     const thisUser = await User.findById(currentUser);
+    if (thisCoin.description === "") {
+      const response = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${id}`
+      );
+      await Coin.findOneAndUpdate(
+        { coinId: id },
+        { description: response.data.description.en }
+      );
+    }
 
     const coinExists = thisUser.watchList.filter((asset) => {
       return thisCoin._id.toString() === asset.coin.toString();

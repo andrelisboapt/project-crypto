@@ -1,23 +1,23 @@
-<div>
-<h1>Here we display a list of all the coins</h1>
+<div class="coins-page">
+<h1 class="title-coins">All Crypto-Currencies and prices today</h1>
 
 
 <div class="coins-container">
 
-  <table class="table table-hover table-dark">
+  <table class="table table-hover">
   <thead>
-    <tr>
-      <th scope="col">#</th>
+    <tr class="titles-table">
+      <th scope="col" >#</th>
       <th scope="col">Name</th>
       <th scope="col">Price Euro - Dollar</th>
-      <th scope="col"> Add to your Profile!</th>
+      <th scope="col" >Add to Profile!</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
     {{#each coin}}
     <tr>
-      <th scope="row">{{market_data.market_cap_rank}}</th> 
-      <td> <img src="{{image.thumb}}" alt="{{id}}" /> {{name}} </td>
+      <th scope="row" class="th-hvr">{{market_data.market_cap_rank}}</th> 
+      <td > <img src="{{image.thumb}}" alt="{{id}}" /> {{name}} </td>
       <td>{{market_data.current_price.eur}} Eur - {{market_data.current_price.usd}} USD</td>
       {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>

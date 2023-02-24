@@ -1,19 +1,45 @@
-<h1>Portfolio coin display</h1>
-
-<img src="{{imageLarge}}" />
-<h2>{{name}} </h2>
-<h2>Market Cap Rank: {{marketCapRank}} </h2>
-<h2>Current price: {{valueEUR}} €</h2>
-<form action="/profile/portfolio/{{_id}}/details" method="post">
-  <label for="amount">Amount:</label>
-  <input type="number" name="amount" id="amount" />
-  <button type="submit">Update Amount</button>
+<h1 class="title-coins">{{name}} Details</h1>
+<div class="card mb-3 cardDetails cardPort cardMargin" style="max-width: 90%;">
+  <div class="row g-0">
+    <div class="col-md-4">
+    
+      <img src="{{imageLarge}}" class="img-fluid rounded-start imgDetails" alt="coin_logo">
+      <div class="formDiv">
+      <form class="formAmount" action="/profile/portfolio/{{_id}}/details" method="post">
+        <div class="editInput">
+  <label for="amount" class="nameEdit">Amount:</label>
+  <div class="updateInput">
+  <input type="number" name="amount" id="amount"  class="rounded"/>
+  <button type="submit" class="btn btn-outline-light updateBtn">Update</button>
+  </div>
+  <div>
+  </div>
 </form>
-
-{{{description}}}
-{{!-- <h1>{{amount}}</h1> --}}
-
-
+</div>
+</div>
+      </div>
+    <div class="col-md-8">
+      <div class="card-body cardDetails">
+        <div class="saveBtn deleteBtn">
 <form action="/profile/portfolio/{{coinId}}/details/delete" method="post">
-  <button type="submit">Delete coin</button>
+<a href="/profile/portfolio/{{coinId}}/details/delete" class="btn-index-a"><button type="submit" class="btn btn-outline-light btn-profile">Delete</button></a>
 </form>
+    </div>
+        <h5 class="card-title"><b>{{name}}</b></h5>
+        <p class="card-text"><span class="bold">Market Cap Rank:</span> {{marketCapRank}}</p>
+        <p class="card-text"><span class="bold">Current Price EUR:</span> {{valueEUR}} €</p>
+        <p class="card-text"><span class="bold">Current Price USD:</span> {{valueUSD}} $</p>
+        <p class="card-text"><span class="bold">Market Cap EUR:</span> {{marketCapEUR}} €</p>
+        <p class="card-text"><span class="bold">Market Cap USD:</span> {{marketCapUSD}} $</p>
+        <p class="card-text"><span class="bold">High in last 24h EUR:</span> {{high24EUR}} €</p>
+        <p class="card-text"><span class="bold">High in last 24h USD:</span> {{high24USD}} $</p>
+        <p class="card-text"><span class="bold">Low in last 24h EUR:</span> {{low24EUR}} €</p>
+        <p class="card-text"><span class="bold">Low in last 24h USD:</span> {{low24USD}} $</p>
+
+        <p class="card-text"><span class="bold">Description</span>: <br>{{{description}}}</p>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
