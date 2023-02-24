@@ -1,4 +1,61 @@
+<div class="coins-page">
+<h1 class="title-coins">All Crypto-Currencies and prices today</h1>
+
+
+<div class="coins-container">
+
+  <table class="table table-hover">
+  <thead>
+    <tr class="titles-table">
+      <th scope="col" >#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price Euro - Dollar</th>
+      <th scope="col" >Add to Profile!</th>
+    </tr>
+  </thead>
+  <tbody >
+    {{#each coin}}
+    <tr>
+      <th scope="row" class="th-hvr">{{market_data.market_cap_rank}}</th> 
+      <td > <img src="{{image.thumb}}" alt="{{id}}" /> {{name}} </td>
+      <td>{{market_data.current_price.eur}} Eur - {{market_data.current_price.usd}} USD</td>
+      {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+      <td>  <li class="nav-item dropdown">
+      <a
+        class="nav-link px-2 link-secondary"
+        href="#"
+        id="navbarDropdownMenuLink"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        ➕
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
 <div>
+        
+
+          <li>
+          <form action="" method="">
+            <button class="dropdown-item port-button" type="submit"><a href="/login" style="text-decoration:none; color:currentColor">Go to Login</a></button>
+          </form>
+        </li>
+      </ul>
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+</div>
+</div>
+
+
+{{!-- THIS IS OLD VERSION --}}
+{{!-- <div>
 <h1>Here we display a list of all the coins</h1>
 
 
@@ -42,4 +99,4 @@
 </div>
 {{/each}}
 
-</div>
+</div> --}}

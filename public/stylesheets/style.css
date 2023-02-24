@@ -1,6 +1,8 @@
+
 *{
   user-select: none;
   /* background-color: #c9e9f6; */
+  
 }
 body {
   padding: 0px;
@@ -88,6 +90,7 @@ body {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
+  background-image: url("/images/Prancheta1.png");
 }
 
 .login-box h2 {
@@ -164,13 +167,15 @@ border-color: #141e30;
 border: 3px solid #141e30;
 width: 10vw;
 margin: 20px;
-margin-top: 40px;
+margin-top: 20%;
 }
 
-.btn-index-a{
+
+.btn-edit-prof{
   text-decoration: none;
   color: #141e30;
 }
+
 li{
   list-style: none;
 }
@@ -219,11 +224,13 @@ color: #5d89bb;
   flex-direction: row;
   justify-content: space-around;
   padding: 5%;
+  background-image: url("/images/Prancheta1.png");
+  background-size: cover;
 }
 
 
 .profile-info{
-  color: #0b111b;
+  color:  #5d89bb;
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -232,8 +239,7 @@ color: #5d89bb;
 .btn-profile{
   border-radius: 1.7vh;
   font-size: 2vh;
-  border-color: #141e30;
-  border: 3px solid #141e30;
+  border: 3px solid #5d89bb;
   width: 7vw;
 }
 .profile-info span{
@@ -247,8 +253,8 @@ width: 65%;
 }
 
 .profile-text{
-  margin-top: 10%;
-  margin-bottom: 7%;
+  margin-top: 0%;
+  margin-bottom: 3%;
 }
 
 /* -------User Profile Portfolio + WatchList */
@@ -326,7 +332,7 @@ color: #5d89bbaa;
 .cardPort{
   background-color: #0b111b;
   margin: 3%;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: hsla(210, 8%, 62%, 0.2) 0px 8px 24px;
 }
 .cardsP{
   display: flex;
@@ -366,4 +372,43 @@ color: #5d89bbaa;
 }
 .deleteBtn{
   position:absolute;
+  
+}
+.cardMargin{
+  margin-top: 0
+}
+.updateBtn{
+  background-color: #141e30;
+}
+.updateInput{
+  display: flex;
+
+}
+
+/* .login-container{
+  background-image: url("/images/Prancheta1.png");
+} */
+
+.login-btn{
+border-radius: 1.5vh;
+font-size: 2vh;
+border-color: #141e30;
+border: 3px solid #141e30;
+width: 7vw;
+margin-bottom: 2vh;
+}
+.login-box h3{
+  font-size: 2.5vh;
+}
+
+.coins-page{
+  background-image: url("/images/Prancheta1.png");
+  background-size: cover;
+}
+.editProf{
+  margin: 0
+}
+.backBtn{
+  color:#fff;
+  margin-left: 2%;
 }

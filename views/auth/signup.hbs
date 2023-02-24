@@ -21,46 +21,11 @@
       <input type="password" name="password" placeholder="Your password" />
       <label>Password</label>
     </div>
-   <button type="submit">Sign Up</button>
+   <button type="submit" class="login-btn">Sign Up</button>
    {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
   </form>
-  <h3> Already have an account? <a href="/login">log in! </a> </h3> 
+  <h3> Already have an account? <a href="/login" style="text-decoration: none;">log in!</a> </h3> 
 </div>
 
-{{!-- <div id="form">
-  <h2>Sign Up</h2>
-  <form action="/signup" method="POST">
-
-    <label> Username:
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
-
-    <label> First Name:
-      <input type="text" name="firstName" placeholder="Your first name" />
-    </label>
-
-    <label> Last Name:
-      <input type="text" name="lastName" placeholder="Your last name" />
-    </label>
-
-    <label> Email:
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
-
-    <label> Password:
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
-
-    <button type="submit">Sign Up</button>
-
-
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
-
- <h3> Already have an account? <a href="/login">log in! </a> </h3> 
-</div>
- --}}
