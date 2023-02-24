@@ -1,15 +1,15 @@
 
 *{
   user-select: none;
-  /* background-color: #c9e9f6; */
+  
   
 }
 body {
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ /*  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
   /* background-color: #c9e9f6; */
   margin: 0;
-  padding: 0;
+  padding: 1%;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -76,6 +76,10 @@ h1 {
 
 body {
   background: linear-gradient(#141e30, #243b55);
+  
+  background-image: url("/images/Prancheta1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
   color: white;
 }
 
@@ -90,7 +94,7 @@ body {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
-  background-image: url("/images/Prancheta1.png");
+  background: linear-gradient(#141e30, #243b55);
 }
 
 .login-box h2 {
@@ -98,6 +102,8 @@ body {
   padding: 0;
   color: #fff;
   text-align: center;
+  font-family: VT323;
+  font-size: 350%;
 }
 
 .login-box .user-box {
@@ -167,7 +173,7 @@ border-color: #141e30;
 border: 3px solid #141e30;
 width: 10vw;
 margin: 20px;
-margin-top: 20%;
+margin-top: 6%;
 }
 
 
@@ -207,6 +213,12 @@ background-color: #141e30;
 padding: 2vw;
 color: #5d89bb;
 }
+
+.title-name-prof{
+  color: #5d89bb;
+  margin-top: 7%;
+  }
+
 .table-hover tr:hover td{
   color: #5d89bb;
   background-color: #0b111b;
@@ -223,9 +235,7 @@ color: #5d89bb;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 5%;
-  background-image: url("/images/Prancheta1.png");
-  background-size: cover;
+  padding: 3%;
 }
 
 
@@ -253,8 +263,8 @@ width: 65%;
 }
 
 .profile-text{
-  margin-top: 0%;
-  margin-bottom: 3%;
+  margin-top: 2%;
+  margin-bottom: 0%;
 }
 
 /* -------User Profile Portfolio + WatchList */
@@ -385,9 +395,6 @@ color: #5d89bbaa;
 
 }
 
-/* .login-container{
-  background-image: url("/images/Prancheta1.png");
-} */
 
 .login-btn{
 border-radius: 1.5vh;
@@ -401,14 +408,22 @@ margin-bottom: 2vh;
   font-size: 2.5vh;
 }
 
-.coins-page{
-  background-image: url("/images/Prancheta1.png");
-  background-size: cover;
-}
+
 .editProf{
-  margin: 0
+  margin-bottom: 0%
 }
 .backBtn{
   color:#fff;
   margin-left: 2%;
+}
+
+.titles-pixelated-prof{
+  font-family: VT323;
+  font-size: 300%;
+}
+.btn-margin{
+  margin-left: 1%;
+}
+.btn-margin2{
+  margin-left: 5%
 }

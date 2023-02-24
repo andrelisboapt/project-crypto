@@ -7,7 +7,7 @@
 
         
       <img class="img-profile" src="{{user.avatar}}" alt="user avatar">
-      <h3 class="title-coins">Profile of {{user.username}}</h3>
+      <h3 class="title-name-prof titles-pixelated-prof">Profile of {{user.username}}</h3>
 
       <div class="profile-text">
         <p><span>First Name: </span>{{user.firstName}}</p>
@@ -28,7 +28,7 @@
 {{!-- Portfolio --}}
   <div class=" cardProf">
     <div class="card cardPort ">
-      <h2>Portfolio</h2>
+      <h2 class="titles-pixelated-prof">Portfolio</h2>
         <div > <a href="/profile/portfolio" style="text-decoration: none;" class="card-header"> click here to see your Portfolio in detail</a> </div>
   {{#each userCoinP}}
       <div class="card-body">
@@ -46,7 +46,7 @@
 {{!-- Watch-List --}}
   <div>
             <div class="card cardPort">
-              <h2>Watch-List</h2>
+              <h2  class="titles-pixelated-prof">Watch-List</h2>
             <div > <a href="/profile/watch-list" style="text-decoration: none;" class="card-header">click here to see your Watch-List in detail</a> </div>
           {{#each userCoinW}}
               <div class="card-body">
