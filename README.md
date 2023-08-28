@@ -153,4 +153,4 @@ The url to your presentation slides
 ### Contributors
 André Lisboa - [`GitHub`](https://github.com/andrelisboapt) - [`LinkedIn`](https://www.linkedin.com/in/andrelisboapt/)
 
-Maria LastName - [`GitHub`](https://github.com/miacsilva) - [`LinkedIn`](https://www.linkedin.com/in/maria-c-b40830147/)
+Maria Carvalho - [`GitHub`](https://github.com/miacsilva) - [`LinkedIn`](https://www.linkedin.com/in/maria-s-carvalho/)
